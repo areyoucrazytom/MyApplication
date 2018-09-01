@@ -1,5 +1,5 @@
 package per.scpfoundation.busket.event;
 
 @Deprecated
-public class ActivityLaunchEvent extends BaseEvent{
+public class ActivityShutdownEvent extends BaseEvent {
 }
