@@ -1,21 +1,18 @@
-package per.scpfoundation.busket.eventmanagers;
+package per.scpfoundation.busket.transceivers;
 
-import android.app.Activity;
 import android.view.View;
 
 import java.util.ArrayList;
-import java.util.Iterator;
+import java.util.HashSet;
 import java.util.List;
 import java.util.TreeSet;
 
-import per.scpfoundation.busket.Busket;
-import per.scpfoundation.busket.EventManager;
-import per.scpfoundation.busket.event.BaseEvent;
-
 public class ObserveViewsTransceivers extends Transceivers{
     private TreeSet<Integer> mIDSet;
+    private HashSet<String> mIDNameSet;
     public ObserveViewsTransceivers(){
         mIDSet = new TreeSet<Integer>();
+        mIDNameSet = new HashSet<>();
     }
     public void addViewID(int id){
         mIDSet.add(id);
@@ -37,14 +34,5 @@ public class ObserveViewsTransceivers extends Transceivers{
         mIDSet.addAll(ret);
         return ret;
     }
-    public static int getCompentID(String packageName, String className, String idName) {
-        int id = 0;
-        try {
-            Class<?> cls = Class.forName(packageName + ".R$" + className);
-            id = cls.getField(idName).getInt(cls);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return id;
-    }
+
 }

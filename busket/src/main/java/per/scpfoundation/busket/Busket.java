@@ -20,9 +20,11 @@ public class Busket {
 
     private Context mContext;
     private Settings mSettings;
+    private BusketWindowCallback mCallback;
     private Busket(Context c){
         mContext = c;
         mSettings = new Settings(null);
+        mCallback = new BusketWindowCallback();
     }
     public synchronized static Busket initialize(Context capp){
         if (sInstance == null) {
@@ -36,6 +38,7 @@ public class Busket {
     public void injectActivity(Activity activity){
         if (mSettings.isListenClick() || mSettings.isListenTouch()) {
             PanelView.hookTouchPanel(activity);
+//            activity.getWindow().setCallback(mCallback);
         }
     }
     public void shutdown(){
